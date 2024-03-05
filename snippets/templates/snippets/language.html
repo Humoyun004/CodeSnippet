@@ -1,0 +1,80 @@
+{% extends 'snippets/base.html' %}
+{% load static %}
+{% block heading %}
+    <title>Language Snippets Page!</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="head_logo d-flex">
+           {% for cont in content %}
+                {% if forloop.first %}
+                    {% if cont.language == 'python' %}
+                        <div class="left_side">
+                            <div class="typing-text">
+                                <h1 class="logo_title">Python Snippets</h1>
+                            </div>
+                            <p class="logo_p">The Python snippet collection contains helper functions from Python 3.6. It includes utilities for most common data types, such as primitivies, lists, dictionaries and date objects.</p>
+                        </div>
+                        <img src="https://i.pinimg.com/564x/21/e1/0e/21e10e1539d14caa187b63220c85a108.jpg" alt="Logo Img" class="title_img">
+                    {% elif cont.language == 'react'%}
+                        <div class="left_side">
+                            <div class="typing-text">
+                                <h1 class="logo_title">React Snippets</h1>
+                            </div>
+                            <p class="logo_p">The React snippet collection contains function components and reusable hooks from React 18.</p>
+                        </div>
+                        <img src="https://i.pinimg.com/564x/95/83/84/9583842b4e92fc32b8a387a7524e8f59.jpg" alt="Logo Img" class="title_img">
+                    {% elif cont.language == 'js'%}
+                        <div class="left_side">
+                            <div class="typing-text">
+                                <h1 class="logo_title">JavaScript Snippets</h1>
+                            </div>
+                            <p class="logo_p">The JavaScript snippet collection contains a wide variety of ES6 helper functions. It includes helpers for dealing with primitives, arrays and objects, as well as algorithms, DOM manipulation functions and Node.js utilities.</p>
+                        </div>
+                        <img src="https://i.pinimg.com/564x/01/95/df/0195df265d4ddaf55414d06883b81d2a.jpg" alt="Logo Img" class="title_img">
+                    {% elif cont.language == 'css'%}
+                        <div class="left_side">
+                            <div class="typing-text">
+                                <h1 class="logo_title">CSS Snippets</h1>
+                            </div>
+                            <p class="logo_p">The CSS snippet collection contains utilities and interactive examples for CSS3. It includes modern techniques for creating commonly-used layouts, styling and animating elements, as well as snippets for handling user interactions.</p>
+                        </div>
+                        <img src="https://i.pinimg.com/564x/99/f9/14/99f91479841aea6512d3f189e64591b3.jpg" alt="Logo Img" class="title_img">
+                    {% elif cont.language == 'html'%}
+                        <div class="left_side">
+                            <div class="typing-text">
+                                <h1 class="logo_title">HTML Snippets</h1>
+                            </div>
+                            <p class="logo_p">The HTML snippet collection contains tips, tricks and practical code examples to help you master web development. This collection covers elements, tags, links, forms, tables and more.</p>
+                        </div>
+                        <img src="https://i.pinimg.com/564x/75/86/8d/75868d93adc5296a82776ea832fa218e.jpg" alt="Logo Img" class="title_img">
+                    {% else %}
+                        <div class="left_side">
+                            <div class="typing-text">
+                                <h1 class="logo_title">Git Snippets</h1>
+                            </div>
+                            <p class="logo_p">The Git snippet collection contains a variety of short tips and tricks for all currently maintained versions of git. It includes most commonly-used commands and covers various use-cases in the form of simplified documentation, complete with multiple examples.</p>
+                        </div>
+                        <img src="https://i.pinimg.com/564x/c7/ae/92/c7ae924f9af6b3d01cfb7091c7463dc2.jpg" class="title_img">
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="row">
+            {% for cont in content %}
+                <div class="col-lg-6 mb-4 contain">
+                    <div class="card_obj">
+                        <img class="card-img-top" src="{{ cont.snippet_image }}" alt="Card image cap">
+                        <div class="card_body text-white">
+                            <span class="card-date text-capitalize mt-2">{{ cont.language }} &#x2022; <a class="text-decoration-none" href="{% url 'hashtag' hashtag_name=cont.tags %}">#{{ cont.tags }}</a> &#x2022; {{ cont.date|date:"F j, Y"}}</span>
+                            <h5 class="card-title text-white"> <a class="text-decoration-none card_detail_link" href="{% url 'DetailCode' pk=cont.pk %}">{{ cont.title }}</a> </h5>
+                            <p class="card-text mt-2">{{ cont.short_definition }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

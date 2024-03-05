@@ -1,0 +1,26 @@
+{% extends 'snippets/base.html' %}
+{% load static %}
+{% block heading %}
+    <title>Tag Page!</title>
+{% endblock %}
+
+{% block content %}
+
+     <div class="row">
+            {% for cont in content %}
+                <div class="col-lg-6 mb-4 contain">
+                    <div class="card_obj">
+                        <img class="card-img-top" src="{{ cont.snippet_image }}" alt="Card image cap">
+                        <div class="card_body text-white">
+                            <span class="card-date text-capitalize mt-2">{{ cont.language }} &#x2022; <a class="text-decoration-none" href="{% url 'hashtag' hashtag_name=cont.tags %}">#{{ cont.tags }}</a> &#x2022; {{ cont.date|date:"F j, Y"}}</span>
+                            <h5 class="card-title text-white"> <a class="text-decoration-none card_detail_link" href="{% url 'DetailCode' pk=cont.pk %}">{{ cont.title }}</a> </h5>
+                            <p class="card-text mt-2">{{ cont.short_definition }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+{% endblock %}

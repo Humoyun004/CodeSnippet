@@ -1,0 +1,48 @@
+{% extends 'snippets/base.html' %}
+{% load static %}
+{% block heading %}
+    <title>All Snippets Page!</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="head_logo d-flex">
+            <div class="left_side">
+                <div class="typing-text">
+                    <h1 class="logo_title">All Snippets</h1>
+                </div>
+                <pre><code>
+const asyncUppercase = item =>
+  new Promise(resolve =>
+    setTimeout(
+      () => resolve(item.toUpperCase()),
+      Math.floor(Math.random() * 1000)
+    ));
+
+def count_by(lst, fn = lambda x: x):
+  count = defaultdict(int)
+  for val in map(fn, lst):
+    count[val] += 1
+  return dict(count)
+                </code></pre>
+            </div>
+            <img src="https://i.pinimg.com/564x/e3/56/b1/e356b150775eaddeded3ffb5a94601ec.jpg" alt="Logo Img" class="title_img">
+        </div>
+        <div class="row">
+            {% for cont in content %}
+                <div class="col-lg-6 mb-4 contain">
+                    <div class="card_obj">
+                        <img class="card-img-top" src="{{ cont.snippet_image }}" alt="Card image cap">
+                        <div class="card_body text-white">
+                            <span class="card-date text-capitalize mt-2">{{ cont.language }} &#x2022; <a class="text-decoration-none" href="{% url 'hashtag' hashtag_name=cont.tags %}">#{{ cont.tags }}</a> &#x2022; {{ cont.date|date:"F j, Y"}}</span>
+                            <h5 class="card-title text-white"> <a class="text-decoration-none card_detail_link" href="{% url 'DetailCode' pk=cont.pk %}">{{ cont.title }}</a> </h5>
+                            <p class="card-text mt-2">{{ cont.short_definition }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+     </div>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'snippets/base.html' %}
+{% load static %}
+{% block heading %}
+    <title>Home Page!</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="head_logo d-flex ">
+            <div class="left_side">
+                <div class="typing-text">
+                    <h1 class="logo_title">Discover short code <i class="fa-duotone fa-laptop-code laptop"></i> snippets for all your development needs.</h1>
+                    <pre><code>
+        def hello():
+            return "Hello World!"
+                    </code></pre>
+            </div>
+                <p class="logo_p">Browse snippets by collection or check out our top picks and latest articles below.</p>
+            </div>
+            <img src="https://i.pinimg.com/originals/09/fc/25/09fc25745eed1aa4d8c4b69d3625e78f.gif" alt="Logo Img" class="title_img">
+        </div>
+        <div class="main_side">
+            <ul class="language-container">
+              <li class="language-item item_1"><a href="http://127.0.0.1:8000/language/python"><i class="fa-brands fa-python"></i> Python</a></li>
+              <li class="language-item"><a href="http://127.0.0.1:8000/language/js"><i class="fa-brands fa-js"></i> JavaScript</a></li>
+              <li class="language-item"><a href="http://127.0.0.1:8000/language/react"><i class="fa-brands fa-react"></i> React</a></li>
+              <li class="language-item"><a href="http://127.0.0.1:8000/language/css"><i class="fa-brands fa-css3-alt"></i> CSS</a></li>
+              <li class="language-item"><a href="http://127.0.0.1:8000/language/html"><i class="fa-brands fa-html5"></i> HTML</a></li>
+              <li class="language-item"><a href="http://127.0.0.1:8000/language/git"><i class="fa-brands fa-square-git"></i> Git</a></li>
+              <li class="language-item"><a href="http://127.0.0.1:8000/snippets/all"><i class="fa-brands fa-stack-overflow"></i> All</a></li>
+            </ul>
+        </div>
+
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'snippets/base.html' %}
+{% load static %}
+{% block heading %}
+    <title>Snippet Detail Page!</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="detail_card">
+            <div class="img_container">
+                <h5 class="detail-title text-white text-center mb-4"> {{ content.title }}</h5>
+            </div>
+            <div class="img_container">
+                <img class="card-img" src="{{ content.snippet_image }}" alt="Card image cap">
+            </div>
+            <div class="detail_body">
+                <p class="card_text">{{ content.text|safe }}</p>
+            </div>
+            <div class="content">
+                <pre><code>{{ content.code }}</code></pre>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+{#    {% for snip in content %}#}
+{#        <div class="snippet text-white">#}
+{#            <h2>{{ snip.title }}</h2>#}
+{#        </div>#}
+{#        <div id="toolbar-container"></div>#}
+{#        <div class="text-white" id="editor">#}
+{#            {{ snip.text|safe }}#}
+{#        </div>#}
+{#            <div class="content">#}
+{#                <pre>#}
+{#                    <code class="{{ snip.language }}">#}
+{#{{ snip.code }}#}
+{#                    </code>#}
+{#                </pre>#}
+{#             </div>#}
+{#    {% endfor %}#}
+
+
+
+{% endblock %}
