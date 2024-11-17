@@ -63,13 +63,26 @@ def new_post(request):
     return render(request, 'snippets/form.html', {'forms': form})
 
 
+from django.core.cache import cache
+
 def search(request):
     if request.method == 'POST':
         search_result = request.POST['searched']
-        result = Code.objects.filter(Q(title__icontains=search_result) | Q(tags__icontains=search_result) | Q(text=search_result) | Q(language__icontains=search_result))
+        cache_key = f"search_{search_result}"
+        result = cache.get(cache_key)
+        
+        if not result:  
+            result = Code.objects.filter(
+                Q(title__icontains=search_result) |
+                Q(tags__icontains=search_result) |
+                Q(language__icontains=search_result)
+            )[:50]
+            cache.set(cache_key, result, timeout=3600)  
+        
         return render(request, 'snippets/search.html', {'content': result})
     else:
         return render(request, 'snippets/search.html')
+
 
 
 
